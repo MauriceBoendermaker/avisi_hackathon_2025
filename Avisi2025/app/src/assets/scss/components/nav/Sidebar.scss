@@ -1,0 +1,45 @@
+@use '../../variables' as *;
+
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background-color: $white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.20);
+
+    .logo {
+        padding: 35px 35px;
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 36px;
+            letter-spacing: 1px;
+            color: $secondary-color;
+
+            i.fa-bolt {
+                font-size: 30px;
+                color: #FFE833;
+                margin: 0px;
+            }
+        }
+    }
+
+    .sidenav-options {
+        color: white;
+        
+        div:not(.sidenav-selected) {
+            color: black;
+            background-color: #fff5ea;
+        }
+        
+        div {
+            display: flex;
+            gap: 10px;
+            background-color: $secondary-color;
+            max-width: 100%;
+            padding: 12px 25px;
+            margin: 20px 25px;
+            border-radius: 10px;
+        }
+    }
+
+}

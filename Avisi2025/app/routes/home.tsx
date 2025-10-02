@@ -1,5 +1,5 @@
 import type { Route } from "../+types/root";
-import Navbar from "../src/components/nav/navbar";
+import Navbar from "../src/components/nav/Navbar";
 
 export function meta({}: Route.MetaArgs) {
   return [

@@ -1,0 +1,40 @@
+@use '../../variables' as *;
+
+nav {
+    height: auto;
+    background-color: $white;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.20);
+    margin-left: 75px;
+
+    .searchbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 350px;
+        height: 40px;
+        margin: 20px;
+        padding: 0 15px;
+        background-color: rgba($primary-color, 0.1);
+        border-radius: $corner-radius;
+
+        i {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.50);
+        }
+
+        input {
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 14px;
+            flex: 1;
+            color: $dark-text-color;
+
+            &::placeholder {
+                color: rgba(0, 0, 0, 0.50);
+            }
+        }
+    }
+
+}
