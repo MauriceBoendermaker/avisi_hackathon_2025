@@ -1,9 +1,4 @@
 import type { Route } from "./+types/Welcome";
-import { Receivers } from "./DB-Receivers";
-import { Gifters } from "./DB-Gifters";
-import { ChoiceRG } from "./ChoiceRG";
-
-
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -11,8 +6,6 @@ export function meta({}: Route.MetaArgs) {
     { name: "description", content: "Avisi 2025" },
   ];
 }
-
-
 export default function Home() {
   return <div>Testtest</div>;
 }

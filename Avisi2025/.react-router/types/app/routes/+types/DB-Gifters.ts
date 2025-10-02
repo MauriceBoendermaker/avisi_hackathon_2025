@@ -2,7 +2,7 @@
 
 import type { GetInfo, GetAnnotations } from "react-router/internal";
 
-type Module = typeof import("../DB-Gifters.js")
+type Module = typeof import("../Schenker.js")
 
 type Info = GetInfo<{
   file: "routes/DB-Gifters.tsx",
@@ -14,7 +14,7 @@ type Matches = [{
   module: typeof import("../../root.js");
 }, {
   id: "routes/DB-Gifters";
-  module: typeof import("../DB-Gifters.js");
+  module: typeof import("../Schenker.js");
 }];
 
 type Annotations = GetAnnotations<Info & { module: Module, matches: Matches }, false>;

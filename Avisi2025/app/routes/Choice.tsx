@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "../src/assets/scss/ChoiceRG.scss";
+import "../src/assets/scss/Choice.scss";
 import { useNavigate } from "react-router";
 
 function AppContent() {
