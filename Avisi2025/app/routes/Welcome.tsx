@@ -1,7 +1,7 @@
 import type { Route } from "./+types/Welcome";
-import { Receivers } from "../src/components/DB-Receivers";
-import { Gifters } from "../src/components/DB-Gifters";
-import { ChoiceRG } from "../src/components/ChoiceRG";
+import { Receivers } from "./DB-Receivers";
+import { Gifters } from "./DB-Gifters";
+import { ChoiceRG } from "./ChoiceRG";
 
 
 
