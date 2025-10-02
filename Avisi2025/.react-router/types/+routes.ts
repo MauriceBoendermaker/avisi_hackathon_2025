@@ -13,10 +13,16 @@ type Pages = {
   "/": {
     params: {};
   };
-  "/ChoiceRG": {
+  "/receiver": {
+    params: {};
+  };
+  "/gifter": {
     params: {};
   };
   "/dashboard": {
+    params: {};
+  };
+  "/choicerg": {
     params: {};
   };
 };
@@ -24,18 +30,26 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/ChoiceRG" | "/dashboard";
+    page: "/" | "/receiver" | "/gifter" | "/dashboard" | "/choicerg";
   };
   "routes/Welcome.tsx": {
     id: "routes/Welcome";
     page: "/";
   };
-  "routes/ChoiceRG.tsx": {
-    id: "routes/ChoiceRG";
-    page: "/ChoiceRG";
+  "routes/DB-Receivers.tsx": {
+    id: "routes/DB-Receivers";
+    page: "/receiver";
+  };
+  "routes/DB-Gifters.tsx": {
+    id: "routes/DB-Gifters";
+    page: "/gifter";
   };
   "routes/Dashboard.tsx": {
     id: "routes/Dashboard";
     page: "/dashboard";
+  };
+  "routes/ChoiceRG.tsx": {
+    id: "routes/ChoiceRG";
+    page: "/choicerg";
   };
 };

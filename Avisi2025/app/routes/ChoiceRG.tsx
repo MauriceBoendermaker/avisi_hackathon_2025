@@ -1,8 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import ChoiceRG from "../src/assets/scss/ChoiceRG.scss"
-
+import "../src/assets/scss/ChoiceRG.scss";
+import { useNavigate } from "react-router";
 
 function AppContent() {
   const navigate = useNavigate();
@@ -18,17 +17,16 @@ function AppContent() {
       <div className="my-3">
         <button
           className="btn btn-lg text-white mx-3 shadow custom-btn"
-          onClick={() => navigate("/Receiver")}
+          onClick={() => navigate("/receiver")}
         >
           Receive
         </button>
         <button
           className="btn btn-lg text-white mx-3 shadow custom-btn"
-          onClick={() => navigate("/Gifter")}
+          onClick={() => navigate("/gifter")}
         >
           Gift
         </button>
-
       </div>
 
       {/* Bottom Section */}
@@ -38,6 +36,5 @@ function AppContent() {
     </div>
   );
 }
-
 
 export default AppContent;
