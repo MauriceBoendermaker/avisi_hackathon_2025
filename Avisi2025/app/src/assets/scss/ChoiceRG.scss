@@ -1,0 +1,12 @@
+.custom-btn {
+    background-color: #FF7F09;
+    min-width: 200px;
+    min-height: 80px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .custom-btn:hover {
+    background-color: #e56e00;
+    transform: scale(1.03);
+  }
+  
