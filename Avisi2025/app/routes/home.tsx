@@ -1,5 +1,5 @@
-import type { Route } from "./+types/home";
-import Navbar from "../src/components/nav/Navbar";
+import type { Route } from "../+types/root";
+import Navbar from "../src/components/nav/navbar";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +9,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Navbar />;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }

@@ -1,0 +1,72 @@
+services:
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "${ADMINER_SERVICE_PORT:-8080}:8080"
+    depends_on:
+      - db
+    environment:
+      - VIRTUAL_HOST=adminer.local.wattshare.com
+      - VIRTUAL_PORT=8080
+      - ADMINER_DESIGN=pepa-linha-dark
+
+  db:
+    container_name: '${COMPOSE_PROJECT_NAME}-db'
+    image: mysql:9
+    restart: always
+    environment:
+      - VIRTUAL_HOST=db.local.wattshare.com
+      - VIRTUAL_PORT=3307
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=wattshare
+    ports:
+      - "${DB_SERVICE_PORT:-3307}:3307"
+    env_file:
+      - .env
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -h localhost -u root -p${MYSQL_PASSWORD} || exit 1" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  api:
+    container_name: '${COMPOSE_PROJECT_NAME}-api'
+    build:
+      context: ./backend
+      args:
+        INSTALL_DEV: true
+
+    env_file:
+      - .env
+    ports:
+      - "${API_SERVICE_PORT:-8000}:8000"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      - VIRTUAL_HOST=api.local.WattShare.com
+      - VIRTUAL_PORT=8000
+    develop:
+      watch:
+        - action: sync
+          x-initialSync: true
+          path: ./backend
+          target: /app
+          ignore:
+            - .venv/
+        - action: rebuild
+          path: ./uv.lock
+
+    stdin_open: true
+    tty: true
+    restart: always
+
+    depends_on:
+      db:
+        condition: service_healthy
+        restart: true
+
+volumes:
+  mysql_data:
