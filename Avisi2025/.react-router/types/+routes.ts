@@ -27,8 +27,8 @@ type RouteFiles = {
     id: "routes/Welcome";
     page: "/";
   };
-  "src/components/ChoiceRG.tsx": {
-    id: "src/components/ChoiceRG";
+  "routes/ChoiceRG.tsx": {
+    id: "routes/ChoiceRG";
     page: "/ChoiceRG";
   };
 };
