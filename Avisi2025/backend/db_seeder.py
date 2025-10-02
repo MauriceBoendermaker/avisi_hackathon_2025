@@ -89,7 +89,7 @@ def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 100):
     with open(csv_path, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            timestamp = datetime.strptime(row["timestamp"], "%Y-%m-%d %H:%M:%S")
+            timestamp = datetime.strptime(row["time"], "%Y-%m-%d %H:%M:%S")
             for name in supplier_names:
                 energy_kwh = float(row[name])
                 record = SupplierRecord(
@@ -148,12 +148,10 @@ def seed_single_value_csv(db: Session, csv_path: str, model, value_column: str, 
 def main():
     db = SessionLocal()
     try:
-        """
         populate_energy_records(db)
         seed_single_value_csv(db, CSV_FILE_W, WindTurbineRecord, "wind_kwh")
         seed_single_value_csv(db, CSV_FILE_P, HourlyPrice, "price")
         seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
-        """
         seed_suppliers_csv(db, CSV_FILE_S)
     finally:
         db.close()
