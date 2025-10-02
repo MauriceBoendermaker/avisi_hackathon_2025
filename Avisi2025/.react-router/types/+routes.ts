@@ -19,10 +19,13 @@ type Pages = {
   "/gifter": {
     params: {};
   };
-  "/dashboard": {
+  "/choicerg": {
     params: {};
   };
-  "/choicerg": {
+  "/doneren/dashboard": {
+    params: {};
+  };
+  "/ontvangen/dashboard": {
     params: {};
   };
 };
@@ -30,7 +33,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/receiver" | "/gifter" | "/dashboard" | "/choicerg";
+    page: "/" | "/receiver" | "/gifter" | "/choicerg" | "/doneren/dashboard" | "/ontvangen/dashboard";
   };
   "routes/Welcome.tsx": {
     id: "routes/Welcome";
@@ -44,12 +47,16 @@ type RouteFiles = {
     id: "routes/DB-Gifters";
     page: "/gifter";
   };
-  "routes/Dashboard.tsx": {
-    id: "routes/Dashboard";
-    page: "/dashboard";
-  };
   "routes/ChoiceRG.tsx": {
     id: "routes/ChoiceRG";
     page: "/choicerg";
+  };
+  "routes/donate/Dashboard.tsx": {
+    id: "routes/donate/Dashboard";
+    page: "/doneren/dashboard";
+  };
+  "routes/receive/Dashboard.tsx": {
+    id: "routes/receive/Dashboard";
+    page: "/ontvangen/dashboard";
   };
 };
