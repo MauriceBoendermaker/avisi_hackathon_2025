@@ -3,16 +3,24 @@ from datetime import datetime
 from app.db.session import SessionLocal
 from app.models.Consumers import Consumer
 from app.models.EnergyRecords import EnergyRecord
+from app.models.WindTurbineRecord import WindTurbineRecord
+from app.models.HourlyPrice import HourlyPrice
+from app.models.SolarBedrijfRecord import SolarBedrijfRecord
+from sqlalchemy.orm import Session
+
 
 # Path to CSV relative to this script
 CSV_FILE = "backend/data/100_consument_verbruik_profielen.csv"
-"""
+CSV_FILE_W = "backend/data/2MW_windmolen_teruglevering.csv"
+CSV_FILE_P = "backend/data/DummyPrices_hourly.csv"
+CSV_FILE_Z = "backend/data/bedrijf_zon_op_dak_teruglevering.csv"
+
 def populate_consumers(db):
     print("Inserting consumers...")
     db.bulk_save_objects([Consumer(id=i) for i in range(1, 101)])
     db.commit()
     print("Consumers inserted.")
-"""
+
 def populate_energy_records(db):
     print("Inserting energy records...")
     batch = []
@@ -43,10 +51,50 @@ def populate_energy_records(db):
         db.commit()
     print("Energy records inserted.")
 
+
+def seed_single_value_csv(db: Session, csv_path: str, model, value_column: str, batch_size: int = 500):
+    """
+    Generic loader for CSVs with a timestamp and one numeric value column.
+    
+    Args:
+        db: SQLAlchemy Session
+        csv_path: Path to the CSV file
+        model: SQLAlchemy model class
+        value_column: Name of the numeric column in CSV
+        batch_size: Number of rows to insert per commit
+    """
+    batch = []
+
+    with open(csv_path, newline="") as csvfile:
+        reader = csv.DictReader(csvfile)
+        row_count = 0
+        for row in reader:
+            timestamp = datetime.strptime(row["timestamp"], "%Y-%m-%d %H:%M:%S")
+            value = float(row[value_column])
+            obj = model(timestamp=timestamp, **{value_column: value})
+            batch.append(obj)
+            row_count += 1
+
+            if len(batch) >= batch_size:
+                db.bulk_save_objects(batch)
+                db.commit()
+                batch = []
+                print(f"  Inserted {row_count} rows so far...")
+
+        # commit leftover
+        if batch:
+            db.bulk_save_objects(batch)
+            db.commit()
+
 def main():
     db = SessionLocal()
     try:
+        """
         populate_energy_records(db)
+        seed_single_value_csv(db, CSV_FILE_W, WindTurbineRecord, "wind_kwh")
+        seed_single_value_csv(db, CSV_FILE_P, HourlyPrice, "price")
+        seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
+        """
     finally:
         db.close()
 
