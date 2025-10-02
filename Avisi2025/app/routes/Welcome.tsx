@@ -1,4 +1,4 @@
-import type { Route } from "./+types/welcome";
+import type { Route } from "./+types/Welcome";
 import { Welcome } from "../src/components/Welcome";
 import { Receivers } from "../src/components/DB-Receivers";
 import { Gifters } from "../src/components/DB-Gifters";
