@@ -8,10 +8,9 @@ services:
 
     env_file:
       - .env
-      - ./backend/.env
     ports:
       - "${API_SERVICE_PORT:-8000}:8000"
-    command: make run
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     environment:
       - VIRTUAL_HOST=api.local.WattShare.com
       - VIRTUAL_PORT=8000
@@ -29,16 +28,3 @@ services:
     stdin_open: true
     tty: true
     restart: always
-
-    volumes:
-      - ./backend/tests:/app/tests
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
-      interval: 5m
-      timeout: 5s
-      retries: 5
-    
-    depends_on:
-      db:
-        condition: service_healthy
-        restart: true
