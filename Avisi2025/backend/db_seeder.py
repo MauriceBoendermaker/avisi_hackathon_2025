@@ -15,7 +15,7 @@ from app.models.Suppliers import Supplier, SupplierRecord
 CSV_FILE = "backend/data/100_consument_verbruik_profielen.csv"
 CSV_FILE_W = "backend/data/2MW_windmolen_teruglevering.csv"
 CSV_FILE_P = "backend/data/DummyPrices_hourly.csv"
-CSV_FILE_Z = "backend/data/bedrijf_zon_op_dak_teruglevering.csv"
+CSV_FILE_Z = "backend/data/Bedrijf_zon_op_dak_teruglevering.csv"
 CSV_FILE_S = "backend/data/150_consument_teruglevering.csv"
 
 
@@ -111,7 +111,7 @@ def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 100):
             db.commit()
 
 
-def seed_single_value_csv(db: Session, csv_path: str, model, value_column: str, batch_size: int = 500):
+def seed_single_value_csv(db: Session, csv_path: str, model, value_column: str, batch_size: int = 100):
     """
     Generic loader for CSVs with a timestamp and one numeric value column.
     
@@ -148,11 +148,12 @@ def seed_single_value_csv(db: Session, csv_path: str, model, value_column: str, 
 def main():
     db = SessionLocal()
     try:
-        populate_energy_records(db)
-        seed_single_value_csv(db, CSV_FILE_W, WindTurbineRecord, "wind_kwh")
-        seed_single_value_csv(db, CSV_FILE_P, HourlyPrice, "price")
-        seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
+        # populate_consumers(db)
+        # populate_energy_records(db)
+        # seed_single_value_csv(db, CSV_FILE_W, WindTurbineRecord, "wind_kwh")
+        # seed_single_value_csv(db, CSV_FILE_P, HourlyPrice, "price")
         seed_suppliers_csv(db, CSV_FILE_S)
+        seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
     finally:
         db.close()
 
