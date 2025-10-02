@@ -1,7 +1,7 @@
 // Misc items
 // Keep variables & default as the first items for proper hierarchy
-@import 'variables';
-@import 'default';
+@use 'variables' as *;
+@use 'default' as *;
 
 // @import 'misc/footer';
 // @import 'misc/buttons';
