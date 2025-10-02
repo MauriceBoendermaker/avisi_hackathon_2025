@@ -8,7 +8,8 @@
 
 
 // Component specific stylesheets
-// @import 'components/nav/nav';
+@use 'components/nav/Navbar' as *;
+@use 'components/nav/Sidebar' as *;
 
 
 // Page specific stylesheets

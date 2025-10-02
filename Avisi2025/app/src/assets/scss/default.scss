@@ -24,6 +24,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     line-height: 1;
+    background-color: $bg-color;
 }
 
 #root {
@@ -33,6 +34,5 @@ body {
 }
 
 main {
-    min-height: calc(100vh - 202px);
-
+    //
 }

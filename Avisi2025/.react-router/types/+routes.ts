@@ -16,12 +16,15 @@ type Pages = {
   "/ChoiceRG": {
     params: {};
   };
+  "/dashboard": {
+    params: {};
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/ChoiceRG";
+    page: "/" | "/ChoiceRG" | "/dashboard";
   };
   "routes/Welcome.tsx": {
     id: "routes/Welcome";
@@ -30,5 +33,9 @@ type RouteFiles = {
   "routes/ChoiceRG.tsx": {
     id: "routes/ChoiceRG";
     page: "/ChoiceRG";
+  };
+  "routes/Dashboard.tsx": {
+    id: "routes/Dashboard";
+    page: "/dashboard";
   };
 };
