@@ -1,40 +1,69 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../src/assets/scss/ChoiceRG.scss";
-import { useNavigate } from "react-router";
 
-function AppContent() {
+
+const WattShareChoice: React.FC = () => {
+  const [darkMode, setDarkMode] = useState<boolean>(false);
   const navigate = useNavigate();
 
+  const toggleDarkMode = (): void => {
+    setDarkMode(!darkMode);
+  };
+
+  const handleDonateEnergy = (): void => {
+    // Navigate to donate energy page
+    navigate('/donate');
+  };
+
+  const handleReceiveEnergy = (): void => {
+    // Navigate to receive energy page
+    navigate('/receive');
+  };
+
+
+
   return (
-    <div className="d-flex flex-column justify-content-between align-items-center vh-100 bg-light text-center py-5">
-      {/* Top Section */}
-      <div className="flex-grow-1 d-flex flex-column justify-content-end">
-        <h2 className="fw-bold text-secondary mb-4">I want to...</h2>
-      </div>
+    <div className={`wattshare-choice ${darkMode ? 'dark-mode' : ''}`}>
+      <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+        {darkMode ? '☀️ Lichte modus' : '🌙 Donkere modus'}
+      </button>
+      <section className="choice-container">
+        <div className="container">
+          <div className="choice-header">
+            <div className="choice-logo">⚡</div>
+            <h1 className="choice-title">Maak je keuze</h1>
+            <p className="choice-subtitle">
+              Kies hoe je wilt deelnemen aan het WattShare netwerk en begin met energie delen
+            </p>
+          </div>
 
-      {/* Button Section */}
-      <div className="my-3">
-        <button
-          className="btn btn-lg text-white mx-3 shadow custom-btn"
-          onClick={() => navigate("/receiver")}
-        >
-          Receive
-        </button>
-        <button
-          className="btn btn-lg text-white mx-3 shadow custom-btn"
-          onClick={() => navigate("/gifter")}
-        >
-          Gift
-        </button>
-      </div>
+          <div className="choice-cards-wrapper">
+            {/* Donate Energy Card */}
+            <div className="choice-card" onClick={handleDonateEnergy}>
+              <div className="choice-icon">
+                <span>🎁</span>
+              </div>
+              <h2 className="choice-card-title">Ik wil energie schenken</h2>
+            </div>
 
-      {/* Bottom Section */}
-      <div className="flex-grow-1 d-flex flex-column justify-content-start">
-        <h2 className="fw-bold text-secondary mt-4">Energy</h2>
-      </div>
+            {/* Receive Energy Card */}
+            <div className="choice-card" onClick={handleReceiveEnergy}>
+              <div className="choice-icon">
+                <span>🔋</span>
+              </div>
+              <h2 className="choice-card-title">Ik wil energie ontvangen</h2>
+            </div>
+          </div>
+
+          <div className="back-link">
+            <a href="/">← Terug naar home</a>
+          </div>
+        </div>
+      </section>
     </div>
   );
-}
+};
 
-export default AppContent;
+export default WattShareChoice;
