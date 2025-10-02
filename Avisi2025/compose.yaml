@@ -13,7 +13,7 @@ services:
 
   db:
     container_name: '${COMPOSE_PROJECT_NAME}-db'
-    image: mysql:9
+    image: mysql:9.0
     restart: always
     environment:
       - VIRTUAL_HOST=db.local.wattshare.com
@@ -21,7 +21,7 @@ services:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=wattshare
     ports:
-      - "${DB_SERVICE_PORT:-3307}:3307"
+      - "3307:3306"
     env_file:
       - .env
     volumes:
@@ -39,6 +39,10 @@ services:
       context: ./backend
       args:
         INSTALL_DEV: true
+
+    volumes:
+      - ./backend:/app
+    working_dir: /app
 
     env_file:
       - .env
