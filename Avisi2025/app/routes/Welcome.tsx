@@ -1,6 +1,6 @@
 import type { Route } from "./+types/Welcome";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "../src/assets/scss/Welkom.scss";
 import { useNavigate } from 'react-router-dom';
 
@@ -105,13 +105,13 @@ const WattShareWelcome = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="stat-card">
-                <div className="stat-number">150+</div>
+                <div className="stat-number">100+</div>
                 <div className="stat-label">Verbonden huishoudens</div>
               </div>
             </div>
             <div className="col-md-4">
               <div className="stat-card">
-                <div className="stat-number">000 kWh</div>
+                <div className="stat-number">? kWh</div>
                 <div className="stat-label">Gedeelde energie</div>
               </div>
             </div>
