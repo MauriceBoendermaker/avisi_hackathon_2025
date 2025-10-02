@@ -1,0 +1,30 @@
+services:
+  api:
+    container_name: '${COMPOSE_PROJECT_NAME}-api'
+    build:
+      context: ./backend
+      args:
+        INSTALL_DEV: true
+
+    env_file:
+      - .env
+    ports:
+      - "${API_SERVICE_PORT:-8000}:8000"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      - VIRTUAL_HOST=api.local.WattShare.com
+      - VIRTUAL_PORT=8000
+    develop:
+      watch:
+        - action: sync
+          x-initialSync: true
+          path: ./backend
+          target: /app
+          ignore:
+            - .venv/
+        - action: rebuild
+          path: ./uv.lock
+
+    stdin_open: true
+    tty: true
+    restart: always
