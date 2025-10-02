@@ -1,12 +1,14 @@
 import csv
 from datetime import datetime
+from sqlalchemy.orm import Session
+
 from app.db.session import SessionLocal
 from app.models.Consumers import Consumer
 from app.models.EnergyRecords import EnergyRecord
 from app.models.WindTurbineRecord import WindTurbineRecord
 from app.models.HourlyPrice import HourlyPrice
 from app.models.SolarBedrijfRecord import SolarBedrijfRecord
-from sqlalchemy.orm import Session
+from app.models.Suppliers import Supplier, SupplierRecord
 
 
 # Path to CSV relative to this script
@@ -14,6 +16,8 @@ CSV_FILE = "backend/data/100_consument_verbruik_profielen.csv"
 CSV_FILE_W = "backend/data/2MW_windmolen_teruglevering.csv"
 CSV_FILE_P = "backend/data/DummyPrices_hourly.csv"
 CSV_FILE_Z = "backend/data/bedrijf_zon_op_dak_teruglevering.csv"
+CSV_FILE_S = "backend/data/150_consument_teruglevering.csv"
+
 
 def populate_consumers(db):
     print("Inserting consumers...")
@@ -50,6 +54,61 @@ def populate_energy_records(db):
         db.bulk_save_objects(batch)
         db.commit()
     print("Energy records inserted.")
+
+
+def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 100):
+    """
+    Seeds supplier data from a CSV with the format:
+    timestamp,opwek_1,opwek_2,...,opwek_N
+
+    Args:
+        db: SQLAlchemy session
+        csv_path: Path to the CSV file
+        batch_size: Number of records to insert per commit
+    """
+
+    with open(csv_path, newline="") as csvfile:
+        reader = csv.reader(csvfile)
+        headers = next(reader)
+        supplier_names = headers[1:]
+
+        # Check existing suppliers
+        existing_suppliers = {s.name: s for s in db.query(Supplier).all()}
+        suppliers = {}
+        for name in supplier_names:
+            if name not in existing_suppliers:
+                s = Supplier(name=name)
+                db.add(s)
+                suppliers[name] = s
+            else:
+                suppliers[name] = existing_suppliers[name]
+        db.commit()
+
+    batch = []
+    row_count = 0
+    with open(csv_path, newline="") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            timestamp = datetime.strptime(row["timestamp"], "%Y-%m-%d %H:%M:%S")
+            for name in supplier_names:
+                energy_kwh = float(row[name])
+                record = SupplierRecord(
+                    timestamp=timestamp,
+                    supplier_id=suppliers[name].id,
+                    energy_kwh=energy_kwh
+                )
+                batch.append(record)
+
+            row_count += 1
+            if len(batch) >= batch_size:
+                db.bulk_save_objects(batch)
+                db.commit()
+                batch = []
+                print(f"Inserted {row_count} timestamps so far...")
+
+        if batch:
+            db.bulk_save_objects(batch)
+            db.commit()
 
 
 def seed_single_value_csv(db: Session, csv_path: str, model, value_column: str, batch_size: int = 500):
@@ -95,6 +154,7 @@ def main():
         seed_single_value_csv(db, CSV_FILE_P, HourlyPrice, "price")
         seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
         """
+        seed_suppliers_csv(db, CSV_FILE_S)
     finally:
         db.close()
 
