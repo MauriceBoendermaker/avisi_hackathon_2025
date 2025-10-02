@@ -2,7 +2,7 @@ import type { Route } from "./+types/Welcome";
 import { Welcome } from "../src/components/Welcome";
 import { Receivers } from "../src/components/DB-Receivers";
 import { Gifters } from "../src/components/DB-Gifters";
-
+import { ChoiceRG } from "../src/components/ChoiceRG";
 
 export function meta({}: Route.MetaArgs) {
   return [
