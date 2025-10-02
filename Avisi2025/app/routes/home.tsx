@@ -3,8 +3,8 @@ import Navbar from "../src/components/nav/Navbar";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Avisi Hackthon 2025" },
+    { name: "description", content: "Avisi 2025" },
   ];
 }
 
