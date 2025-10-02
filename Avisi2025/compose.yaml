@@ -17,7 +17,7 @@ services:
     restart: always
     environment:
       - VIRTUAL_HOST=db.local.wattshare.com
-      - VIRTUAL_PORT=3306
+      - VIRTUAL_PORT=3307
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=wattshare
     ports:
