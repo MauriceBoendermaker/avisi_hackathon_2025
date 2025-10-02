@@ -13,7 +13,8 @@ from app.models import (
     EnergyRecords,
     WindTurbineRecord,
     HourlyPrice,
-    SolarBedrijfRecord
+    SolarBedrijfRecord,
+    Suppliers
 )
 from app.core.config import settings
 
