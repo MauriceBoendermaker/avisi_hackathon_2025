@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.models.EnergyRecords import EnergyRecord
 
-
 router = APIRouter()
 
 @router.get("/api/totaal/allepersonen")
