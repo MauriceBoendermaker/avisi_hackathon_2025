@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from app.api import verbruik
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="My FastAPI Backend")
+app = FastAPI()
 
 # Include routers
 app.include_router(verbruik.router, prefix="/api/v1", tags=["verbruik"])

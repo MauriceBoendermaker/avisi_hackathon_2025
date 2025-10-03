@@ -111,7 +111,7 @@ def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 20000):
             db.commit()
 
 
-def seed_single_value_csv(db: Session, csv_path: str, model, value_column: str, batch_size: int = 500):
+def seed_single_value_csv(db: Session, csv_path: str, model, value_column: str, batch_size: int = 100):
     """
     Generic loader for CSVs with a timestamp and one numeric value column.
     
@@ -154,6 +154,7 @@ def main():
         # seed_single_value_csv(db, CSV_FILE_P, HourlyPrice, "price")
         seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
         seed_suppliers_csv(db, CSV_FILE_S)
+        seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
     finally:
         db.close()
 
