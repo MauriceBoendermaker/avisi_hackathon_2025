@@ -1,10 +1,14 @@
 @use '../../variables' as *;
 
 .sidebar {
+    position: relative;
     width: 300px;
     height: 100vh;
     background-color: $white;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.20);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .logo {
         padding: 35px 35px;
@@ -18,28 +22,56 @@
             i.fa-bolt {
                 font-size: 30px;
                 color: #FFE833;
-                margin: 0px;
+                margin: 0;
             }
         }
     }
 
     .sidenav-options {
-        color: white;
-        
-        div:not(.sidenav-selected) {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        flex-grow: 1;
+
+        .sidenav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
             color: black;
             background-color: #fff5ea;
-        }
-        
-        div {
-            display: flex;
-            gap: 10px;
-            background-color: $secondary-color;
+            font-weight: 500;
             max-width: 100%;
             padding: 12px 25px;
-            margin: 20px 25px;
+            margin: 10px 25px;
             border-radius: 10px;
+            font-size: 16px;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
+
+            i {
+                min-width: 20px;
+                text-align: center;
+            }
+
+            &:hover {
+                box-shadow: $box-shadow-soft;
+            }
+        }
+
+        .sidenav-selected {
+            background-color: $secondary-color;
+            color: $white;
+            font-weight: 600;
+            box-shadow: $box-shadow-soft;
+
+            i {
+                color: $white;
+            }
+        }
+
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none;
         }
     }
-
 }

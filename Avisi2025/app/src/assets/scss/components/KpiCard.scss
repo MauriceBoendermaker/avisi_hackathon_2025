@@ -1,0 +1,53 @@
+@use '../variables' as *;
+
+.kpi-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: calc(100% - 75px);
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.kpi-card {
+    background: $white;
+    border-radius: $corner-radius;
+    box-shadow: $box-shadow-soft;
+    padding: 30px;
+    width: 100%;
+
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: $dark-text-color;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__value {
+        font-size: 30px;
+        font-weight: 700;
+        color: $dark-text-color;
+    }
+
+    &__change {
+        font-size: 18px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &.up {
+            color: $green;
+        }
+
+        &.down {
+            color: $red;
+        }
+    }
+}

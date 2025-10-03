@@ -1,0 +1,51 @@
+@use '../variables' as *;
+
+.route-anim-container {
+    position: relative;
+}
+
+.fade-route-appear {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.fade-route-appear-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.fade-route-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.fade-route-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.fade-route-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-route-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .fade-route-appear,
+    .fade-route-appear-active,
+    .fade-route-enter,
+    .fade-route-enter-active,
+    .fade-route-exit,
+    .fade-route-exit-active {
+        transform: none !important;
+        transition: opacity 150ms linear !important;
+    }
+}

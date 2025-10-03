@@ -7,8 +7,12 @@ export default [
 
   
   // Doneren routes
-  route("doneren/dashboard", "routes/donate/Dashboard.tsx"),
+  route("doneren/dashboard/overzicht", "routes/donate/Dashboard.tsx"),
 
   // Ontvangen routes
-  route("ontvangen/dashboard", "routes/receive/Dashboard.tsx"),
+  route("ontvangen/dashboard/overzicht", "routes/receive/Dashboard.tsx"),
+  route("ontvangen/dashboard/matches", "routes/receive/Matches.tsx"),
+  route("ontvangen/dashboard/transacties", "routes/receive/Transactions.tsx"),
+
+  route("/dashboard/community", "routes/community.tsx"),
 ] satisfies RouteConfig;
