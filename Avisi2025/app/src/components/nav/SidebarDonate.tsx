@@ -23,33 +23,13 @@ const SidebarDonate: React.FC = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/doneren/dashboard/matches"
+                    to="/doneren/dashboard/bestemming"
                     className={({ isActive }) =>
                         `sidenav-item ${isActive ? "sidenav-selected" : ""}`
                     }
                 >
-                    <i className="fa-solid fa-user-group"></i>
-                    <span>Matches</span>
-                </NavLink>
-
-                <NavLink
-                    to="/doneren/dashboard/transacties"
-                    className={({ isActive }) =>
-                        `sidenav-item ${isActive ? "sidenav-selected" : ""}`
-                    }
-                >
-                    <i className="fa-solid fa-money-bills"></i>
-                    <span>Transacties</span>
-                </NavLink>
-
-                <NavLink
-                    to="/dashboard/community"
-                    className={({ isActive }) =>
-                        `sidenav-item ${isActive ? "sidenav-selected" : ""}`
-                    }
-                >
-                    <i className="fa-solid fa-people-group"></i>
-                    <span>Community</span>
+                    <i className="fa-solid fa-map-pin"></i>
+                    <span>Bestemming</span>
                 </NavLink>
             </div>
         </aside>

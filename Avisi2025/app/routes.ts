@@ -8,6 +8,7 @@ export default [
   
   // Doneren routes
   route("doneren/dashboard/overzicht", "routes/donate/Dashboard.tsx"),
+  route("doneren/dashboard/bestemming", "routes/donate/Bestemming.tsx"),
 
   // Ontvangen routes
   route("ontvangen/dashboard/overzicht", "routes/receive/Dashboard.tsx"),

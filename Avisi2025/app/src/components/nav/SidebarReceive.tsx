@@ -41,16 +41,6 @@ const SidebarReceive: React.FC = () => {
                     <i className="fa-solid fa-money-bills"></i>
                     <span>Transacties</span>
                 </NavLink>
-
-                <NavLink
-                    to="/dashboard/community"
-                    className={({ isActive }) =>
-                        `sidenav-item ${isActive ? "sidenav-selected" : ""}`
-                    }
-                >
-                    <i className="fa-solid fa-people-group"></i>
-                    <span>Community</span>
-                </NavLink>
             </div>
         </aside>
     );

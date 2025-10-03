@@ -1,0 +1,56 @@
+@use '../variables' as *;
+
+.list-card {
+    background: $white;
+    border-radius: $corner-radius;
+    box-shadow: $box-shadow-soft;
+    padding: 16px;
+}
+
+.list-card__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $dark-text-color;
+    margin-bottom: 12px;
+}
+
+.list-card__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+        text-align: left;
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+
+    th {
+        font-weight: 600;
+    }
+
+    .empty {
+        text-align: center;
+        color: $light-text-color;
+        padding: 18px 0;
+    }
+}
+
+.bar {
+    position: relative;
+    height: 10px;
+    background: $bg-color;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, $secondary-color, $primary-color);
+}
+
+.bar__label {
+    margin-left: 8px;
+    font-size: 12px;
+    color: $dark-text-color;
+}
