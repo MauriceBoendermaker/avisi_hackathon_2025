@@ -41,6 +41,23 @@ const WattShareWelcome = () => {
     }).format(numValue);
   };
 
+  const formatCost = (value: number | string | null): string => {
+    if (value === null) return '...';
+    if (value === 'Error') return 'Fout';
+  
+    const numValue = typeof value === 'string' ? parseFloat(value) : value;
+  
+    if (isNaN(numValue)) return '-';
+  
+    const cost = numValue * 0.11;
+  
+    return new Intl.NumberFormat('nl-NL', {
+      style: 'decimal',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(cost);
+  };
+
   const renderTabContent = () => {
     switch (activeTab) {
       case 'faq':
@@ -57,7 +74,7 @@ const WattShareWelcome = () => {
             </div>
             <div className="help-item">
               <strong>Hoe begin ik?</strong>
-              <p>Klik op "Aan de slag" om je te registreren en je huishouden te verbinden.</p>
+              <p>Klik op "Aan de slag" en begin met delen.</p>
             </div>
           </div>
         );
@@ -140,7 +157,7 @@ const WattShareWelcome = () => {
       {/* Features Section */}
       <section className="feature-section">
         <div className="container">
-          <h2 className="section-title">Hoe WattShare werkt</h2>
+          <h2 className="section-title">Hoe WattShare werkt?</h2>
           <p className="section-subtitle">
             Huishoudens verbinden om een slimmer, efficiënter energienetwerk te creëren
           </p>
@@ -151,9 +168,9 @@ const WattShareWelcome = () => {
                 <div className="feature-icon">
                   <span>🔌</span>
                 </div>
-                <h3 className="feature-title">Verbind je huis</h3>
+                <h3 className="feature-title">Energie overzicht</h3>
                 <p className="feature-description">
-                  Koppel je huishouden aan het WattShare netwerk en volg je energieproductie en -verbruik in real-time.
+                  Volg je energieproductie en -verbruik in real-time met een Dashboard.
                 </p>
               </div>
             </div>
@@ -191,7 +208,7 @@ const WattShareWelcome = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="stat-card">
-                <div className="stat-number">100+</div>
+                <div className="stat-number">≈ <br></br>100+</div>
                 <div className="stat-label">Verbonden huishoudens</div>
               </div>
             </div>
@@ -203,8 +220,8 @@ const WattShareWelcome = () => {
             </div>
             <div className="col-md-4">
               <div className="stat-card">
-                <div className="stat-number">000</div>
-                <div className="stat-label">Gemeenschapsbesparing</div>
+                <div className="stat-number">≈ €{formatCost(verbruik)}</div>
+                <div className="stat-label">Totale financiële impact</div>
               </div>
             </div>
           </div>
