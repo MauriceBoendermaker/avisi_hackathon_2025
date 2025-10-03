@@ -11,7 +11,7 @@ const DashboardReceive: React.FC = () => {
     const [verbruik, setVerbruik] = useState<number | string | null>(null);
 
     useEffect(() => {
-        fetch('http://localhost:8002/api/v1/api/totaal/allepersonen')
+        fetch('http://localhost:8002/api/v1/api/totaal/1persoon')
             .then(res => res.json())
             .then(data => setVerbruik(data.totaal_verbruik_kwh))
             .catch(() => setVerbruik('Error'));
