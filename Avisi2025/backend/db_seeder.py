@@ -56,7 +56,7 @@ def populate_energy_records(db):
     print("Energy records inserted.")
 
 
-def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 100):
+def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 15000):
     """
     Seeds supplier data from a CSV with the format:
     timestamp,opwek_1,opwek_2,...,opwek_N
@@ -78,11 +78,11 @@ def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 100):
         for name in supplier_names:
             if name not in existing_suppliers:
                 s = Supplier(name=name)
-                db.add(s)
+                # db.add(s)
                 suppliers[name] = s
             else:
                 suppliers[name] = existing_suppliers[name]
-        db.commit()
+        # db.commit()
 
     batch = []
     row_count = 0

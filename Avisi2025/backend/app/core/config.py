@@ -4,7 +4,7 @@ import os
 
 class Settings(BaseSettings):
     # Database URL for SQLAlchemy
-    DATABASE_URL: str = "mysql+pymysql://root:password@127.0.0.1:3307/wattshare"
+    DATABASE_URL: str = "mysql+pymysql://root:password@db:3306/wattshare"
 
     # Optional FastAPI settings
     API_V1_STR: str = "/api/v1"
