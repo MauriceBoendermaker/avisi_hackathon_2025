@@ -1,0 +1,125 @@
+@use '../variables' as *;
+
+.coverage-grid {
+    justify-content: center;
+    width: 66%;
+    margin: 24px 0;
+    background: $white;
+    border-radius: $corner-radius;
+    box-shadow: $box-shadow-soft;
+    padding: 20px;
+
+    .cg-header {
+        display: flex;
+        gap: 12px;
+        align-items: baseline;
+        margin-bottom: 16px;
+
+        h3 {
+            margin: 0;
+            font-size: 18px;
+            color: $dark-text-color;
+            font-weight: 700;
+        }
+
+        span {
+            font-size: 14px;
+            color: $light-text-color;
+            font-weight: 500;
+        }
+    }
+
+    .cg-axes {
+        --gap: 6px;
+        --cell: 22px;
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: 20px auto;
+        gap: 8px;
+
+        .cg-corner {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            font-size: 12px;
+            color: $light-text-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cg-hours {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            display: grid;
+            grid-template-columns: repeat(24, var(--cell));
+            gap: var(--gap);
+            font-size: 12px;
+            color: $dark-text-color;
+            text-align: center;
+            line-height: 20px;
+            overflow-x: auto;
+
+            .cg-hour {
+                white-space: nowrap;
+            }
+        }
+
+        .cg-quarters {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            display: grid;
+            grid-template-rows: repeat(4, var(--cell));
+            gap: var(--gap);
+            font-size: 12px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .cg-matrix-wrap {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            border-radius: 8px;
+            padding: var(--gap);
+            overflow: auto;
+
+            .cg-matrix {
+                display: grid;
+                grid-template-columns: repeat(24, var(--cell));
+                grid-template-rows: repeat(4, var(--cell));
+                gap: var(--gap);
+                width: calc(24 * var(--cell) + 23 * var(--gap));
+                height: calc(4 * var(--cell) + 3 * var(--gap));
+
+                .cg-cell {
+                    width: var(--cell);
+                    height: var(--cell);
+                    border-radius: 3px;
+                    outline: 1px solid rgba(0, 0, 0, 0.05);
+                    background: rgba($primary-color, 0.2);
+                    transition: transform 0.05s ease;
+
+                    &:hover {
+                        transform: scale(1.08);
+                        outline-color: rgba(0, 0, 0, 0.12);
+                    }
+                }
+            }
+        }
+    }
+
+    .cg-legend {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+        font-size: 12px;
+        color: $light-text-color;
+
+        .cg-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            outline: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    }
+}

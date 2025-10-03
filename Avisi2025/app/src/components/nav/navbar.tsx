@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
     <nav>
         <div className="container-fluid">
             <div className="row">
-                <div className="col-10">
+                <div className="col-12">
                     <div className="searchbar">
                         <i className="fa-solid fa-magnifying-glass"></i>
                         <input type="text" placeholder="Begin met zoeken..." />
