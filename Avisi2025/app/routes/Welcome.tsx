@@ -110,7 +110,7 @@ const WattShareWelcome = () => {
             </div>
             <div className="col-md-4">
               <div className="stat-card">
-                <div className="stat-number">{verbruik !== null ? `${verbruik} kWh` : 'Loading...'}</div>
+                <div className="stat-number">{verbruik !== null ? `${verbruik} kWh` : 'Laden...'}</div>
                 <div className="stat-label">Totaal gedeelde energie over huishoudens</div>
               </div>
             </div>

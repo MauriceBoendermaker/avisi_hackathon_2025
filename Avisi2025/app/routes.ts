@@ -4,7 +4,6 @@ export default [
   index("routes/Welcome.tsx"),
   // Keuze scherm
   route("Choice", "routes/Choice.tsx"),
-
   
   // Doneren routes
   route("doneren/dashboard/overzicht", "routes/donate/Dashboard.tsx"),
@@ -14,5 +13,5 @@ export default [
   route("ontvangen/dashboard/matches", "routes/receive/Matches.tsx"),
   route("ontvangen/dashboard/transacties", "routes/receive/Transactions.tsx"),
 
-  route("/dashboard/community", "routes/community.tsx"),
+  route("/dashboard/community", "routes/Community.tsx"),
 ] satisfies RouteConfig;

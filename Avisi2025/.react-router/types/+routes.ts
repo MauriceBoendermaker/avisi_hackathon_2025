@@ -13,13 +13,7 @@ type Pages = {
   "/": {
     params: {};
   };
-  "/receiver": {
-    params: {};
-  };
-  "/gifter": {
-    params: {};
-  };
-  "/choicerg": {
+  "/Choice": {
     params: {};
   };
   "/doneren/dashboard/overzicht": {
@@ -42,23 +36,15 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/receiver" | "/gifter" | "/choicerg" | "/doneren/dashboard/overzicht" | "/ontvangen/dashboard/overzicht" | "/ontvangen/dashboard/matches" | "/ontvangen/dashboard/transacties" | "/dashboard/community";
+    page: "/" | "/Choice" | "/doneren/dashboard/overzicht" | "/ontvangen/dashboard/overzicht" | "/ontvangen/dashboard/matches" | "/ontvangen/dashboard/transacties" | "/dashboard/community";
   };
   "routes/Welcome.tsx": {
     id: "routes/Welcome";
     page: "/";
   };
-  "routes/DB-Receivers.tsx": {
-    id: "routes/DB-Receivers";
-    page: "/receiver";
-  };
-  "routes/DB-Gifters.tsx": {
-    id: "routes/DB-Gifters";
-    page: "/gifter";
-  };
-  "routes/ChoiceRG.tsx": {
-    id: "routes/ChoiceRG";
-    page: "/choicerg";
+  "routes/Choice.tsx": {
+    id: "routes/Choice";
+    page: "/Choice";
   };
   "routes/donate/Dashboard.tsx": {
     id: "routes/donate/Dashboard";
@@ -76,8 +62,8 @@ type RouteFiles = {
     id: "routes/receive/Transactions";
     page: "/ontvangen/dashboard/transacties";
   };
-  "routes/community.tsx": {
-    id: "routes/community";
+  "routes/Community.tsx": {
+    id: "routes/Community";
     page: "/dashboard/community";
   };
 };
