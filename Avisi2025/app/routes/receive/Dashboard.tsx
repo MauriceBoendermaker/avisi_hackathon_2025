@@ -9,12 +9,28 @@ import { useEffect, useState } from 'react';
 const DashboardReceive: React.FC = () => {
 
     const [verbruik, setVerbruik] = useState<number | string | null>(null);
+    const [bespaard, setBespaard] = useState<number | string | null>(null);
+
 
     useEffect(() => {
         fetch('http://localhost:8002/api/v1/api/totaal/1')
             .then(res => res.json())
             .then(data => setVerbruik(data.totaal_verbruik_kwh))
             .catch(() => setVerbruik('Error'));
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:8002/api/v1/api/matching/yearly/1')
+            .then(res => res.json())
+            .then(data => setBespaard(data.total_kwh_received))
+            .catch(() => setBespaard('Error'));
+    }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:8002/api/v1/api/matching/yearly/1')
+            .then(res => res.json())
+            .then(data => setBespaard(data.money_saved_euro))
+            .catch(() => setBespaard('Error'));
     }, []);
 
     const formatKwh = (value: number | string | null): string => {
@@ -42,7 +58,7 @@ const DashboardReceive: React.FC = () => {
                     <KpiCard title="Totaal verbruik (jaar)" value={`${formatKwh(verbruik)} kWh`} change="-15%" changeType="down" />
                 </div>
                 <div className="col-md-4">
-                    <KpiCard title="Totaal ontvangen" value="21 kWh" change="+22%" changeType="up" />
+                    <KpiCard title="Totaal ontvangen" value={`${(bespaard)} kWh`} change="+22%" changeType="up" />
                 </div>
                 <div className="col-md-4">
                     <KpiCard title="Totaal bespaard" value="€420" change="+€2" changeType="up" />

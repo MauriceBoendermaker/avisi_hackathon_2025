@@ -10,6 +10,12 @@ const WattShareWelcome = () => {
   const [helpBoxOpen, setHelpBoxOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'faq' | 'contact' | 'guide'>('faq');
 
+  const LoadingSpinner = () => (
+    <div className="spinner-border text-primary" role="status" style={{width: '1.5rem', height: '1.5rem'}}>
+      <span className="visually-hidden">Loading...</span>
+    </div>
+  );
+
   useEffect(() => {
     fetch('http://localhost:8002/api/v1/api/totaal/allepersonen')
       .then(res => res.json())
@@ -37,7 +43,7 @@ const WattShareWelcome = () => {
     // Format with thousand separators and 2 decimal places
     return new Intl.NumberFormat('nl-NL', {
       minimumFractionDigits: 0,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 0
     }).format(numValue);
   };
 
