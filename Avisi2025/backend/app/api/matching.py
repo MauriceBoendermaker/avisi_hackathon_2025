@@ -35,7 +35,7 @@ class MatchingSummary:
         self.energy_sources = EnergySourceBreakdown()
         self.top_solar_suppliers: List[TopSupplier] = []
 
-@router.get("/matching/weekly/{consumer_id}", response_model=dict)
+@router.get("/matching/yearly/{consumer_id}", response_model=dict)
 async def get_energy_matching(
     consumer_id: int,
     db: Session = Depends(get_db)
@@ -50,9 +50,8 @@ async def get_energy_matching(
         if not consumer:
             raise HTTPException(status_code=404, detail="Consumer not found")
 
-        # Laatste 24 uur voor berekening
-        end_time = datetime.now() - timedelta(days=365)
-        start_time = end_time - timedelta(hours=168)
+        start_time = datetime(2024, 1, 1)
+        end_time = datetime(2024, 12, 31, 23, 59, 59)
 
         # consuments consumptie berekenen
         consumer_usage = db.query(
@@ -215,7 +214,7 @@ class AnnualMatch:
         self.wind_contribution = 0.0
 
 
-@router.get("/matching/yearly/{consumer_id}", response_model=dict)
+@router.get("/matching/max/{consumer_id}", response_model=dict)
 async def get_annual_matching(
     consumer_id: int,
     db: Session = Depends(get_db)
