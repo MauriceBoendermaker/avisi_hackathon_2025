@@ -159,9 +159,9 @@ def get_top_solar_suppliers(db: Session, start_time: datetime, end_time: datetim
             kwh=round(distributed_to_consumer, 2)
         ))
 
-    # Sort by contribution and take top 2
+    # Sort by contribution and take top 3
     top_suppliers.sort(key=lambda x: x.kwh, reverse=True)
-    return top_suppliers
+    return top_suppliers[:3]
 
 def build_response(consumer_id: int, total_received: float, money_saved: float,
                   wind_kwh: float, solar_kwh: float, top_suppliers: List[TopSupplier]) -> dict:
@@ -180,7 +180,7 @@ def build_response(consumer_id: int, total_received: float, money_saved: float,
         {
             "supplier_id": supplier.supplier_id,
             "name": supplier.name,
-            "kwh": func.abs(supplier.kwh)
+            "kwh": supplier.kwh
         }
         for supplier in top_suppliers
     ]
