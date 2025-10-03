@@ -11,5 +11,15 @@
 @use 'components/nav/Navbar' as *;
 @use 'components/nav/Sidebar' as *;
 
+@use 'components/KpiCard.scss' as *;
+@use 'components/Matches.scss' as *;
+@use 'components/CoverageGrid.scss' as *;
+@use 'components/TransactionsList.scss' as *;
+
+@use 'components/Community.scss' as *;
+
+
+@use 'components/route-transitions.scss' as *;
+
 
 // Page specific stylesheets
