@@ -2,9 +2,9 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
   index("routes/Welcome.tsx"),
-  route("receiver", "routes/DB-Receivers.tsx"),
-  route("gifter", "routes/DB-Gifters.tsx"),
-  route("choicerg", "routes/ChoiceRG.tsx"),
+  // Keuze scherm
+  route("Choice", "routes/Choice.tsx"),
+
   
   // Doneren routes
   route("doneren/dashboard", "routes/donate/Dashboard.tsx"),
