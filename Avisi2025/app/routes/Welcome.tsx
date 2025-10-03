@@ -1,22 +1,21 @@
-import type { Route } from "./+types/Welcome";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import "../src/assets/scss/Welkom.scss";
 import { useNavigate } from 'react-router-dom';
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Avisi Hackthon 2025" },
-    { name: "description", content: "Avisi 2025" },
-  ];
-}
 
 const WattShareWelcome = () => {
+  const [verbruik, setVerbruik] = useState<number | string | null>(null);
   const [darkMode, setDarkMode] = useState(false);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  useEffect(() => {
+    fetch('http://localhost:8002/api/v1/api/totaal/allepersonen')
+      .then(res => res.json())
+      .then(data => setVerbruik(data.totaal_verbruik_kwh))
+      .catch(() => setVerbruik('Error'));
+  }, []);
+
+  const toggleDarkMode = () => setDarkMode(!darkMode);
 
   const navigate = useNavigate();
   const handleGetStarted = (): void => {
@@ -111,8 +110,8 @@ const WattShareWelcome = () => {
             </div>
             <div className="col-md-4">
               <div className="stat-card">
-                <div className="stat-number">? kWh</div>
-                <div className="stat-label">Gedeelde energie</div>
+                <div className="stat-number">{verbruik !== null ? `${verbruik} kWh` : 'Loading...'}</div>
+                <div className="stat-label">Totaal gedeelde energie over huishoudens</div>
               </div>
             </div>
             <div className="col-md-4">
