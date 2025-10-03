@@ -334,7 +334,7 @@ def assign_annual_suppliers(consumer_id, consumer_usage, suppliers_data, db, sta
     
     # Sort by contribution and take top 2 for display (but all contribute)
     assigned.sort(key=lambda x: x['annual_kwh'], reverse=True)
-    return assigned[:2]  # Only show top 2, but all suppliers actually contribute
+    return assigned[:2]
 
 def get_total_consumption(db, start_time, end_time):
     """Get total energy consumption across all consumers"""
