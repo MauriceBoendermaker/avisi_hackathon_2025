@@ -14,12 +14,12 @@ const WattShareChoice: React.FC = () => {
 
   const handleDonateEnergy = (): void => {
     // Navigate to donate energy page
-    navigate('/donate');
+    navigate('/doneren/dashboard/overzicht');
   };
 
   const handleReceiveEnergy = (): void => {
     // Navigate to receive energy page
-    navigate('/receive');
+    navigate('/ontvangen/dashboard/overzicht');
   };
 
 
