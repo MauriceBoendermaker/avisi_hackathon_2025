@@ -10,7 +10,12 @@ const DashboardReceive: React.FC = () => {
 
     const [verbruik, setVerbruik] = useState<number | string | null>(null);
     const [bespaard, setBespaard] = useState<number | string | null>(null);
+    const [ontvangen, setOntvangen] = useState<number | string | null>(null);
 
+    function test(ontvangen: string,bespaard: string){
+        setOntvangen(ontvangen)
+        setBespaard(bespaard)
+    }
 
     useEffect(() => {
         fetch('http://localhost:8002/api/v1/api/totaal/1')
@@ -20,16 +25,9 @@ const DashboardReceive: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8002/api/v1/api/matching/yearly/1')
+        fetch('http://localhost:8002/api/consumer/matching/yearly/4')
             .then(res => res.json())
-            .then(data => setBespaard(data.total_kwh_received))
-            .catch(() => setBespaard('Error'));
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8002/api/v1/api/matching/yearly/1')
-            .then(res => res.json())
-            .then(data => setBespaard(data.money_saved_euro))
+            .then(data => test(data.total_kwh_received, data.money_saved_euro))
             .catch(() => setBespaard('Error'));
     }, []);
 
@@ -58,10 +56,10 @@ const DashboardReceive: React.FC = () => {
                     <KpiCard title="Totaal verbruik (jaar)" value={`${formatKwh(verbruik)} kWh`} change="-15%" changeType="down" />
                 </div>
                 <div className="col-md-4">
-                    <KpiCard title="Totaal ontvangen" value={`${(bespaard)} kWh`} change="+22%" changeType="up" />
+                    <KpiCard title="Totaal ontvangen" value={`${formatKwh(ontvangen)} kWh`} change="+22%" changeType="up" />
                 </div>
-                <div className="col-md-4">
-                    <KpiCard title="Totaal bespaard" value="€420" change="+€2" changeType="up" />
+                <div className="col-md-4">  
+                    <KpiCard title="Totaal bespaard" value={`${formatKwh(bespaard)} kWh`} change="+€2" changeType="up" />
                 </div>
             </div>
             <CoverageGrid />
