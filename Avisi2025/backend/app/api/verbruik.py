@@ -15,10 +15,10 @@ def totaal_allepersonen(db: Session = Depends(get_db)):
         return {"error": str(e)} 
 
 
-@router.get("/api/totaal/1persoon")
-def totaal_1persoon(db: Session = Depends(get_db)):
+@router.get("/api/totaal/{consumerId}")
+def totaal_1persoon(consumerId, db: Session = Depends(get_db)):
     try:
-        total = db.query(EnergyRecord.energy_kwh).filter(EnergyRecord.consumer_id==1)
+        total = db.query(EnergyRecord.energy_kwh).filter(EnergyRecord.consumer_id==consumerId)
         total_kwh = sum(row[0] for row in total)
         return {"totaal_verbruik_kwh": round(total_kwh, 2)}
     except Exception as e:

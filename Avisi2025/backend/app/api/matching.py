@@ -180,7 +180,7 @@ def build_response(consumer_id: int, total_received: float, money_saved: float,
         {
             "supplier_id": supplier.supplier_id,
             "name": supplier.name,
-            "kwh": supplier.kwh
+            "kwh": func.abs(supplier.kwh)
         }
         for supplier in top_suppliers
     ]
