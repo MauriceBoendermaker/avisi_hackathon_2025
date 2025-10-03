@@ -1,0 +1,140 @@
+@use '../variables' as *;
+
+.matches-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0 16px;
+
+    h2 {
+        margin: 0;
+        color: $dark-text-color;
+        font-weight: 700;
+    }
+
+    &__stats {
+        display: flex;
+        gap: 12px;
+
+        .pill {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: $white;
+            border-radius: $corner-radius;
+            box-shadow: $box-shadow-soft;
+            padding: 10px 14px;
+
+            span {
+                color: $light-text-color;
+                font-size: 13px;
+            }
+
+            strong {
+                color: $dark-text-color;
+            }
+        }
+    }
+}
+
+.matches-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "left right"
+        "bottom bottom";
+    gap: 20px;
+}
+
+.matches-left {
+    grid-area: left;
+    background: $white;
+    border-radius: $corner-radius;
+    box-shadow: $box-shadow-soft;
+    padding: 16px;
+}
+
+.matches-right {
+    grid-area: right;
+    background: $white;
+    border-radius: $corner-radius;
+    box-shadow: $box-shadow-soft;
+    padding: 16px;
+}
+
+.matches-bottom {
+    grid-area: bottom;
+    background: $white;
+    border-radius: $corner-radius;
+    box-shadow: $box-shadow-soft;
+    padding: 16px;
+}
+
+.top-suppliers {
+    &__title {
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: $dark-text-color;
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th,
+        td {
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 1px solid $bg-color;
+            color: $dark-text-color;
+        }
+
+        th {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        .empty {
+            text-align: center;
+            color: $light-text-color;
+            padding: 18px 0;
+        }
+    }
+}
+
+.bar {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: #fff5ea;
+    border-radius: 999px;
+    overflow: hidden;
+
+    &__fill {
+        height: 100%;
+        background: $secondary-color;
+    }
+
+    &__label {
+        position: absolute;
+        right: 8px;
+        top: -2px;
+        font-size: 12px;
+        color: $dark-text-color;
+    }
+}
+
+@media (max-width: 1024px) {
+    .matches-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "left"
+            "right"
+            "bottom";
+    }
+}

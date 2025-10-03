@@ -56,7 +56,7 @@ def populate_energy_records(db):
     print("Energy records inserted.")
 
 
-def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 100):
+def seed_suppliers_csv(db: Session, csv_path: str, batch_size: int = 20000):
     """
     Seeds supplier data from a CSV with the format:
     timestamp,opwek_1,opwek_2,...,opwek_N
@@ -152,6 +152,7 @@ def main():
         # populate_energy_records(db)
         # seed_single_value_csv(db, CSV_FILE_W, WindTurbineRecord, "wind_kwh")
         # seed_single_value_csv(db, CSV_FILE_P, HourlyPrice, "price")
+        seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
         seed_suppliers_csv(db, CSV_FILE_S)
         seed_single_value_csv(db, CSV_FILE_Z, SolarBedrijfRecord, "solar_bedrijf_kwh")
     finally:
