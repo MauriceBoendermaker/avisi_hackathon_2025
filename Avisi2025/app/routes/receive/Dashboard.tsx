@@ -59,7 +59,7 @@ const DashboardReceive: React.FC = () => {
                     <KpiCard title="Totaal ontvangen" value={`${formatKwh(ontvangen)} kWh`} change="+22%" changeType="up" />
                 </div>
                 <div className="col-md-4">  
-                    <KpiCard title="Totaal bespaard" value={`${formatKwh(bespaard)} kWh`} change="+€2" changeType="up" />
+                    <KpiCard title="Totaal bespaard" value={`${formatKwh(bespaard)} kWh`} change="+2 kWh" changeType="up" />
                 </div>
             </div>
             <CoverageGrid />
