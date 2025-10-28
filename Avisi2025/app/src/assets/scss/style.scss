@@ -16,6 +16,10 @@
 @use 'components/CoverageGrid.scss' as *;
 @use 'components/TransactionsList.scss' as *;
 
+@use 'components/FinancialImpactWaterfall.scss' as *;
+@use 'components/StackedDonationTrend.scss' as *;
+@use 'components/RecipientsTable.scss' as *;
+
 @use 'components/Community.scss' as *;
 
 
