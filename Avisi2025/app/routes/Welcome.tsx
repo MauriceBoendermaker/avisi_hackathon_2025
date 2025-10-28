@@ -143,7 +143,7 @@ const WattShareWelcome = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
-              <h1 className="hero-title">Welkom bij WattShare?</h1>
+              <h1 className="hero-title">Welkom bij WattShare!</h1>
               <p className="hero-subtitle">
                 Deel energie met je gemeenschap. Bespaar geld. Bouw samen aan een duurzame toekomst.
               </p>

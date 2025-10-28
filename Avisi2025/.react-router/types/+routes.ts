@@ -19,6 +19,9 @@ type Pages = {
   "/doneren/dashboard/overzicht": {
     params: {};
   };
+  "/doneren/dashboard/bestemming": {
+    params: {};
+  };
   "/ontvangen/dashboard/overzicht": {
     params: {};
   };
@@ -36,7 +39,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/Choice" | "/doneren/dashboard/overzicht" | "/ontvangen/dashboard/overzicht" | "/ontvangen/dashboard/matches" | "/ontvangen/dashboard/transacties" | "/dashboard/community";
+    page: "/" | "/Choice" | "/doneren/dashboard/overzicht" | "/doneren/dashboard/bestemming" | "/ontvangen/dashboard/overzicht" | "/ontvangen/dashboard/matches" | "/ontvangen/dashboard/transacties" | "/dashboard/community";
   };
   "routes/Welcome.tsx": {
     id: "routes/Welcome";
@@ -49,6 +52,10 @@ type RouteFiles = {
   "routes/donate/Dashboard.tsx": {
     id: "routes/donate/Dashboard";
     page: "/doneren/dashboard/overzicht";
+  };
+  "routes/donate/Bestemming.tsx": {
+    id: "routes/donate/Bestemming";
+    page: "/doneren/dashboard/bestemming";
   };
   "routes/receive/Dashboard.tsx": {
     id: "routes/receive/Dashboard";

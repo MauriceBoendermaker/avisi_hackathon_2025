@@ -12,6 +12,7 @@ const SidebarDonate: React.FC = () => {
             </div>
 
             <div className="sidenav-options">
+                <h3 className="sidenav-item-title">Donateur dashboard:</h3>
                 <NavLink
                     to="/doneren/dashboard/overzicht"
                     className={({ isActive }) =>
@@ -23,7 +24,30 @@ const SidebarDonate: React.FC = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/doneren/dashboard/matches"
+                    to="/doneren/dashboard/bestemming"
+                    className={({ isActive }) =>
+                        `sidenav-item ${isActive ? "sidenav-selected" : ""}`
+                    }
+                >
+                    <i className="fa-solid fa-map-pin"></i>
+                    <span>Bestemming</span>
+                </NavLink>
+
+                <hr/>
+
+                <h3 className="sidenav-item-title">Ontvanger dashboard:</h3>
+                <NavLink
+                    to="/ontvangen/dashboard/overzicht"
+                    className={({ isActive }) =>
+                        `sidenav-item ${isActive ? "sidenav-selected" : ""}`
+                    }
+                >
+                    <i className="fa-solid fa-chart-line"></i>
+                    <span>Overzicht</span>
+                </NavLink>
+
+                <NavLink
+                    to="/ontvangen/dashboard/matches"
                     className={({ isActive }) =>
                         `sidenav-item ${isActive ? "sidenav-selected" : ""}`
                     }
@@ -33,7 +57,7 @@ const SidebarDonate: React.FC = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/doneren/dashboard/transacties"
+                    to="/ontvangen/dashboard/transacties"
                     className={({ isActive }) =>
                         `sidenav-item ${isActive ? "sidenav-selected" : ""}`
                     }
@@ -41,18 +65,9 @@ const SidebarDonate: React.FC = () => {
                     <i className="fa-solid fa-money-bills"></i>
                     <span>Transacties</span>
                 </NavLink>
-
-                <NavLink
-                    to="/dashboard/community"
-                    className={({ isActive }) =>
-                        `sidenav-item ${isActive ? "sidenav-selected" : ""}`
-                    }
-                >
-                    <i className="fa-solid fa-people-group"></i>
-                    <span>Community</span>
-                </NavLink>
             </div>
         </aside>
+        
     );
 };
 
