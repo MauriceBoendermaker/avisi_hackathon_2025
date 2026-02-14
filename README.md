@@ -73,9 +73,9 @@ The challenge addressed a major societal problem:
 
 ## Team
 
-- **Maurice Boendermaker** — Software Engineer
-- **Yassine Abderrazik** — Software Engineer
-- **Mathijs de Niet** — Software Engineer
+- **Maurice Boendermaker** — Full-Stack
+- **Yassine Abderrazik** — Back-End & Data
+- **Mathijs de Niet** — Full-Stack
 
 ---
 
